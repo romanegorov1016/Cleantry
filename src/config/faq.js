@@ -1,32 +1,32 @@
 export const faqItems = [
   {
     id: "supplies",
-    question: "Do you bring cleaning supplies?",
+    question: "Вы привозите средства и инвентарь?",
     answer:
-      "Yes. Our team arrives fully equipped with professional-grade products and tools. Eco-friendly supplies are available upon request at no extra hassle.",
+      "Да, можем приехать со своими средствами и инвентарём. Если у вас есть особые пожелания по средствам, например эко-вариант, просто укажите это при заявке.",
   },
   {
     id: "duration",
-    question: "How long does cleaning take?",
+    question: "Сколько времени занимает уборка?",
     answer:
-      "Duration depends on the size of your space and the type of service. A typical home clean takes 2–4 hours. We provide an estimated timeframe when you book.",
+      "Зависит от площади, состояния помещения и типа уборки. Обычно мы уточняем детали заранее и называем ориентировочное время до подтверждения заказа.",
   },
   {
     id: "regular",
-    question: "Can I book regular cleaning?",
+    question: "Можно заказать регулярную уборку?",
     answer:
-      "Absolutely. We offer weekly, bi-weekly, and monthly schedules with the same trusted team whenever possible for consistent results.",
+      "Да, можно договориться о еженедельной, двухнедельной или индивидуальной регулярности. Это удобно, если хотите поддерживать чистоту без постоянной организации процесса.",
   },
   {
-    id: "eco",
-    question: "Do you offer eco-friendly cleaning?",
+    id: "renovation",
+    question: "Делаете уборку после ремонта?",
     answer:
-      "Yes. Our eco cleaning option uses green-certified products that are safe for children, pets, and anyone sensitive to harsh chemicals.",
+      "Да. Убираем строительную пыль, следы работ, поверхности, полы и другие зоны по согласованному списку.",
   },
   {
     id: "quote",
-    question: "How do I get a quote?",
+    question: "Как узнать стоимость?",
     answer:
-      "Contact us by phone, email, or through the button below. Share your space details and preferred schedule — we will respond with a clear, transparent quote.",
+      "Оставьте заявку с описанием помещения и задачи. Мы уточним детали и рассчитаем стоимость до начала работы.",
   },
 ];

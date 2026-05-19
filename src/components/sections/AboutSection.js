@@ -6,25 +6,25 @@ import { CheckCircle2, MessageCircle, Shield } from "lucide-react";
 const highlights = [
   {
     icon: Shield,
-    title: "Reliability",
-    text: "On-time arrivals and consistent results you can count on, visit after visit.",
+    title: "Надёжность",
+    text: "Приезжаем в согласованное время и держим процесс понятным от начала до конца.",
   },
   {
     icon: MessageCircle,
-    title: "Clear communication",
-    text: "We confirm details upfront and keep you informed before, during, and after every clean.",
+    title: "Понятная коммуникация",
+    text: "Уточняем детали до уборки и заранее проговариваем важные моменты.",
   },
   {
     icon: CheckCircle2,
-    title: "Consistent quality",
-    text: "Structured checklists and quality reviews ensure every space meets our standards.",
+    title: "Контроль результата",
+    text: "Работаем по чек-листу и обращаем внимание на зоны, которые часто пропускают.",
   },
 ];
 
 const stats = [
-  { value: "5+", label: "Years experience" },
-  { value: "100%", label: "Quality focus" },
-  { value: "Fast", label: "Response time" },
+  { value: "12+", label: "лет опыта" },
+  { value: "100%", label: "фокус на результате" },
+  { value: "Быстро", label: "отвечаем на заявки" },
 ];
 
 export function AboutSection() {
@@ -34,15 +34,15 @@ export function AboutSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
-              About Cleantry
+              О Cleantry
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              A cleaning team that treats your space like their own
+              Мы убираем так, чтобы вам не приходилось всё перепроверять
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-600">
-              We are local professionals dedicated to making homes and
-              businesses feel fresh, organized, and welcoming. Every visit is
-              planned with care — because your comfort matters.
+              Cleantry — это понятная коммуникация, аккуратная работа и результат,
+              на который можно рассчитывать. Вы знаете, что будет сделано, когда
+              приедет команда и как принять уборку без лишнего стресса.
             </p>
             <ul className="mt-8 space-y-5">
               {highlights.map(({ icon: Icon, title, text }) => (
@@ -60,7 +60,7 @@ export function AboutSection() {
               ))}
             </ul>
             <Button href="#contact" className="mt-8">
-              Get to know us
+              Узнать больше
             </Button>
           </div>
 
@@ -72,10 +72,10 @@ export function AboutSection() {
             <div className="relative rounded-3xl border border-emerald-100/80 bg-white p-8 shadow-lg shadow-emerald-900/5">
               <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-emerald-50 via-cleantry-mint to-teal-50 p-8">
                 <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
-                  Our promise
+                  Наш подход
                 </p>
                 <p className="mt-3 text-2xl font-bold leading-snug text-slate-900">
-                  Careful team. Clear process. Spaces you love coming home to.
+                  Аккуратно. Понятно. Без ощущения, что за уборкой нужно следить.
                 </p>
               </div>
               <div className="mt-6 grid grid-cols-3 gap-3">

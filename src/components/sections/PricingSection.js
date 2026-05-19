@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { pricingPlans } from "@/config/pricing";
+import { siteConfig } from "@/config/site";
 import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
@@ -11,9 +12,9 @@ export function PricingSection() {
     <section id="pricing" className={`bg-white ${SECTION_PADDING}`}>
       <Container>
         <SectionHeader
-          eyebrow="Pricing"
-          title="Simple, transparent pricing"
-          description="Choose a plan that fits your space. All prices are starting estimates — contact us for a personalized quote."
+          eyebrow="Цены"
+          title="Понятная стоимость без неприятных сюрпризов"
+          description="Итоговая цена зависит от площади, состояния помещения, типа уборки и дополнительных задач — мы всё уточняем заранее."
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {pricingPlans.map((plan) => (
@@ -28,7 +29,7 @@ export function PricingSection() {
             >
               {plan.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-600 px-4 py-1 text-xs font-semibold text-white">
-                  Most Popular
+                  {plan.popularLabel || "Популярно"}
                 </span>
               )}
               <h3 className="text-xl font-semibold text-slate-900">
@@ -36,12 +37,6 @@ export function PricingSection() {
               </h3>
               <p className="mt-2 text-3xl font-bold text-emerald-700">
                 {plan.price}
-                {plan.period && (
-                  <span className="text-sm font-normal text-slate-500">
-                    {" "}
-                    {plan.period}
-                  </span>
-                )}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {plan.description}
@@ -62,7 +57,7 @@ export function PricingSection() {
                 variant={plan.highlighted ? "primary" : "outline"}
                 className="mt-8 w-full"
               >
-                Request a quote
+                {siteConfig.ctaQuote}
               </Button>
             </article>
           ))}

@@ -1,8 +1,8 @@
 export const navigationItems = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Услуги", href: "#services" },
+  { label: "О нас", href: "#about" },
+  { label: "Как работаем", href: "#process" },
+  { label: "Цены", href: "#pricing" },
+  { label: "Вопросы", href: "#faq" },
+  { label: "Контакты", href: "#contact" },
 ];

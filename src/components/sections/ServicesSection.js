@@ -2,11 +2,11 @@ import Link from "next/link";
 import {
   Home,
   Sparkles,
-  Truck,
   Building2,
   Leaf,
   Hammer,
   ArrowRight,
+  Warehouse,
 } from "lucide-react";
 import { services } from "@/config/services";
 import { Container } from "@/components/common/Container";
@@ -16,10 +16,10 @@ import { SECTION_PADDING } from "@/lib/constants";
 const iconMap = {
   home: Home,
   sparkles: Sparkles,
-  truck: Truck,
+  hammer: Hammer,
+  house: Warehouse,
   building: Building2,
   leaf: Leaf,
-  hammer: Hammer,
 };
 
 export function ServicesSection() {
@@ -27,9 +27,9 @@ export function ServicesSection() {
     <section id="services" className={`bg-white ${SECTION_PADDING}`}>
       <Container>
         <SectionHeader
-          eyebrow="Our Services"
-          title="Cleaning tailored to your space"
-          description="From everyday home care to deep cleans and commercial spaces — choose the service that fits your needs."
+          eyebrow="Наши услуги"
+          title="Уборка под вашу задачу"
+          description="Разовая, регулярная, генеральная, офисная, эко-уборка или уборка после ремонта — выберите формат, который подходит именно вам."
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
@@ -52,7 +52,7 @@ export function ServicesSection() {
                   href={service.href}
                   className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 transition-colors group-hover:text-emerald-800"
                 >
-                  Learn more
+                  Подробнее
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </article>

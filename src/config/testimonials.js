@@ -1,26 +1,26 @@
 export const testimonials = [
   {
     id: "1",
-    name: "Sarah Mitchell",
-    serviceType: "Home Cleaning",
+    name: "Анна",
+    serviceType: "Уборка квартиры",
     quote:
-      "Cleantry transformed our home before guests arrived. Every surface sparkled and the team was professional from start to finish.",
+      "Заказывала уборку перед приездом гостей. Быстро договорились, всё сделали аккуратно, особенно кухня и ванная. Очень спокойно, без лишних вопросов.",
     rating: 5,
   },
   {
     id: "2",
-    name: "James Chen",
-    serviceType: "Office Cleaning",
+    name: "Игорь",
+    serviceType: "Уборка офиса",
     quote:
-      "We use Cleantry weekly for our office. Reliable scheduling, consistent quality, and our team always comments on how fresh the space feels.",
+      "Нужно было привести офис в порядок после перестановки. Команда приехала вовремя, убрали быстро, результат устроил всех.",
     rating: 5,
   },
   {
     id: "3",
-    name: "Emily Rodriguez",
-    serviceType: "Move-out Cleaning",
+    name: "Мария",
+    serviceType: "Уборка после ремонта",
     quote:
-      "Move-out cleans have never been easier. Cleantry delivers on time and helps us turn units around faster between tenants.",
+      "После ремонта было много пыли, самой браться не хотелось. После уборки наконец стало ощущение, что можно нормально жить.",
     rating: 5,
   },
 ];

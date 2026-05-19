@@ -9,13 +9,13 @@ export default function NotFound() {
           404
         </p>
         <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-          Page not found
+          Страница не найдена
         </h1>
         <p className="mt-4 text-slate-600">
-          The page you are looking for does not exist or has been moved.
+          Такой страницы нет или она была перемещена.
         </p>
         <div className="mt-8">
-          <Button href="/">Back to Home</Button>
+          <Button href="/">На главную</Button>
         </div>
       </Container>
     </section>

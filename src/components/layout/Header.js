@@ -17,7 +17,7 @@ export function Header() {
             {siteConfig.name}
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
@@ -30,8 +30,8 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href="#contact" className="hidden sm:inline-flex">
-              Get a Quote
+            <Button href="#contact" className="hidden sm:inline-flex text-sm px-5">
+              {siteConfig.ctaQuote}
             </Button>
             <MobileMenu />
           </div>

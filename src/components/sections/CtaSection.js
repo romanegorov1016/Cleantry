@@ -17,32 +17,33 @@ export function CtaSection() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Ready for a space that feels brand new?
+            Хотите чистое пространство без лишней суеты?
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-emerald-50">
-            Book your first clean today or request a free quote. Our team responds
-            quickly and makes scheduling simple.
+            Оставьте заявку, и мы поможем подобрать формат уборки, рассчитать
+            стоимость и выбрать удобное время.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
-              href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+              href="#contact"
               variant="secondary"
               className="bg-white text-emerald-700 hover:bg-emerald-50"
             >
-              Book cleaning
+              {siteConfig.ctaQuote}
             </Button>
             <Button
-              href={`mailto:${siteConfig.email}`}
+              href="#services"
               variant="outline"
               className="border-white/50 text-white hover:border-white hover:bg-white/10"
             >
-              Get a free quote
+              Посмотреть услуги
             </Button>
           </div>
 
-          <ul className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+          <ul className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-8">
             <li className="flex items-center gap-2 text-sm text-emerald-50">
-              <Phone className="h-4 w-4 shrink-0" />
+              <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span className="sr-only">Телефон:</span>
               <a
                 href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
                 className="hover:text-white"
@@ -51,13 +52,14 @@ export function CtaSection() {
               </a>
             </li>
             <li className="flex items-center gap-2 text-sm text-emerald-50">
-              <Mail className="h-4 w-4 shrink-0" />
+              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span className="sr-only">Email:</span>
               <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
                 {siteConfig.email}
               </a>
             </li>
             <li className="flex items-center gap-2 text-sm text-emerald-50">
-              <MapPin className="h-4 w-4 shrink-0" />
+              <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
               {siteConfig.location}
             </li>
           </ul>

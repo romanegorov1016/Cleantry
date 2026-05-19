@@ -1,11 +1,15 @@
 export const siteConfig = {
   name: "Cleantry",
   description:
-    "Professional cleaning services for homes, offices, and specialty spaces. Reliable teams, eco-friendly options, and spotless results every time.",
+    "Профессиональная уборка квартир, домов, офисов и коммерческих помещений. Аккуратная команда, понятный процесс и чистый результат.",
   url: "https://cleantry.com",
-  phone: "+1 (555) 123-4567",
+  phone: "+375 (29) 000-00-00",
   email: "hello@cleantry.com",
-  location: "Serving the greater metro area",
+  location: "Работаем по городу и области",
+  ctaQuote: "Рассчитать стоимость",
+  footerNav: "Навигация",
+  footerContact: "Контакты",
+  copyright: "Все права защищены.",
   socials: {
     facebook: "https://facebook.com/cleantry",
     instagram: "https://instagram.com/cleantry",
