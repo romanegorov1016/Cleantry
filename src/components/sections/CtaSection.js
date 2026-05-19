@@ -17,7 +17,7 @@ export function CtaSection() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Хотите чистое пространство без лишней суеты?
+            Хотите вернуться в чистое пространство без лишних забот?
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-emerald-50">
             Оставьте заявку, и мы поможем подобрать формат уборки, рассчитать
@@ -25,7 +25,7 @@ export function CtaSection() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
-              href="#contact"
+              href="#calculator"
               variant="secondary"
               className="bg-white text-emerald-700 hover:bg-emerald-50"
             >
@@ -34,7 +34,7 @@ export function CtaSection() {
             <Button
               href="#services"
               variant="outline"
-              className="border-white/50 text-white hover:border-white hover:bg-white/10"
+              className="bg-white text-emerald-700 hover:bg-emerald-50"
             >
               Посмотреть услуги
             </Button>

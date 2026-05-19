@@ -30,12 +30,12 @@ export function HeroSection() {
               <span className="text-emerald-600">дома снова легко дышится</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              Cleantry помогает с уборкcой квартир, домов, офисов, уборкой после
-              ремонта и регулярным обслуживанием — с понятной коммуникацией и
-              вниманием к деталям.
+              Cleantry помогает с уборкой квартир, домов и офисов, берёт на себя
+              уборку после ремонта и регулярное поддержание чистоты — с понятным
+              расчётом, аккуратной командой и вниманием к деталям.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href="#contact">{siteConfig.ctaQuote}</Button>
+              <Button href="#calculator">{siteConfig.ctaQuote}</Button>
               <Button href="#services" variant="outline">
                 Посмотреть услуги
               </Button>

@@ -3,6 +3,7 @@ export const navigationItems = [
   { label: "О нас", href: "#about" },
   { label: "Как работаем", href: "#process" },
   { label: "Цены", href: "#pricing" },
+  { label: "Калькулятор", href: "#calculator" },
   { label: "Вопросы", href: "#faq" },
   { label: "Контакты", href: "#contact" },
 ];

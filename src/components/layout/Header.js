@@ -30,7 +30,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href="#contact" className="hidden sm:inline-flex text-sm px-5">
+            <Button href="#calculator" className="hidden sm:inline-flex text-sm px-5">
               {siteConfig.ctaQuote}
             </Button>
             <MobileMenu />

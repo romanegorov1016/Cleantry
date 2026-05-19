@@ -53,7 +53,7 @@ export function PricingSection() {
                 ))}
               </ul>
               <Button
-                href="#contact"
+                href="#calculator"
                 variant={plan.highlighted ? "primary" : "outline"}
                 className="mt-8 w-full"
               >
