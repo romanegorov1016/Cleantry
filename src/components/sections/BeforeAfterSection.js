@@ -39,7 +39,7 @@ export function BeforeAfterSection() {
         <SectionHeader
           eyebrow="До и после"
           title="Результат, который видно сразу"
-          description="Здесь будут реальные фото до и после уборки — чтобы вы могли оценить разницу ещё до заказа."
+          description="Здесь появятся реальные фото работ Cleantry, чтобы вы могли увидеть подход к уборке и результат на практике."
         />
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-slate-500">
           Здесь позже появятся реальные фото работ Cleantry.

@@ -27,7 +27,7 @@ export function WhyUsSection() {
         <SectionHeader
           eyebrow="Почему Cleantry"
           title="Не просто уборка, а спокойствие за результат"
-          description="Сервис построен вокруг доверия, ясности и стабильного качества — чтобы вы могли делигировать уборку и не думать о ней снова."
+          description="Сервис построен вокруг доверия, ясности и стабильного качества — чтобы вы могли делегировать уборку и не думать о ней снова."
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {whyUsBenefits.map((benefit) => {

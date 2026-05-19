@@ -45,10 +45,10 @@ export function HeroVisual() {
         </div>
         <div className="absolute -bottom-4 left-6 right-6 rounded-2xl border border-emerald-100/80 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm">
           <p className="text-xs font-medium uppercase tracking-wide text-emerald-600">
-            Нам доверяют дома и бизнесы
+            Для квартир, домов и офисов
           </p>
           <p className="mt-1 text-sm font-semibold text-slate-800">
-            Чистый результат без стресса
+            Чистота, которую не нужно перепроверять
           </p>
         </div>
       </div>
