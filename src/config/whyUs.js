@@ -1,44 +1,44 @@
 export const whyUsBenefits = [
   {
     id: "trained",
-    title: "Trained and careful cleaners",
+    title: "Аккуратные клинеры",
     description:
-      "Vetted professionals who treat your home or office with respect and attention to detail.",
+      "Люди, которые бережно относятся к вашей квартире, дому или офису.",
     icon: "users",
   },
   {
     id: "pricing",
-    title: "Transparent pricing",
+    title: "Прозрачный расчёт",
     description:
-      "Clear quotes with no hidden fees — you know exactly what you are paying for before we arrive.",
+      "Объясняем, от чего зависит цена, ещё до начала работы.",
     icon: "receipt",
   },
   {
     id: "schedule",
-    title: "Flexible schedule",
+    title: "Удобный график",
     description:
-      "One-time, recurring, or urgent bookings that fit your calendar — mornings, evenings, and weekends.",
+      "Разовая, регулярная, срочная уборка — утром, вечером или в выходные.",
     icon: "calendar",
   },
   {
     id: "eco",
-    title: "Eco-friendly products",
+    title: "Эко-средства",
     description:
-      "Green-certified options available for families, pets, and teams who prefer sustainable cleaning.",
+      "По запросу — для семей, домашних животных и чувствительных пространств.",
     icon: "leaf",
   },
   {
     id: "quality",
-    title: "Quality control",
+    title: "Контроль качества",
     description:
-      "Checklists, supervision, and follow-up ensure every visit meets our consistent standards.",
+      "Чек-листы и финальная проверка помогают держать результат стабильным.",
     icon: "check",
   },
   {
     id: "versatile",
-    title: "Homes and businesses",
+    title: "Для дома и бизнеса",
     description:
-      "From apartments and houses to offices and commercial spaces — one trusted team for every need.",
+      "Квартиры, дома, офисы, коммерческие помещения и особые задачи.",
     icon: "building",
   },
 ];

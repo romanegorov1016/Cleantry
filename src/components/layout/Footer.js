@@ -24,7 +24,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-              Quick Links
+              {siteConfig.footerNav}
             </h3>
             <ul className="mt-4 space-y-2">
               {navigationItems.map((item) => (
@@ -42,7 +42,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-              Contact
+              {siteConfig.footerContact}
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li>
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
-          &copy; {currentYear} {siteConfig.name}. All rights reserved.
+          &copy; {currentYear} {siteConfig.name}. {siteConfig.copyright}
         </div>
       </Container>
     </footer>

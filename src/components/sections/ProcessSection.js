@@ -8,9 +8,9 @@ export function ProcessSection() {
     <section id="process" className={`bg-slate-50/80 ${SECTION_PADDING}`}>
       <Container>
         <SectionHeader
-          eyebrow="How It Works"
-          title="Four simple steps to a cleaner space"
-          description="Getting started with Cleantry is easy. We guide you from first contact to a spotless result."
+          eyebrow="Как это работает"
+          title="Четыре шага до чистого пространства"
+          description="Заказать уборку просто — без длинных звонков и непонятных условий."
         />
         <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((item, index) => (

@@ -20,7 +20,7 @@ export function HeroVisual() {
           {!imageError ? (
             <Image
               src={HERO_IMAGE}
-              alt="Bright, clean modern space after professional cleaning"
+              alt="Светлое чистое пространство после профессиональной уборки"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -34,10 +34,10 @@ export function HeroVisual() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-emerald-700">
-                  Hero image placeholder
+                  Здесь будет фото
                 </p>
                 <p className="mt-1 text-xs text-slate-500">
-                  Add your photo at public/images/hero/clean-bedroom.webp
+                  public/images/hero/clean-bedroom.webp
                 </p>
               </div>
             </div>
@@ -45,10 +45,10 @@ export function HeroVisual() {
         </div>
         <div className="absolute -bottom-4 left-6 right-6 rounded-2xl border border-emerald-100/80 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm">
           <p className="text-xs font-medium uppercase tracking-wide text-emerald-600">
-            Trusted by homeowners & businesses
+            Нам доверяют дома и бизнесы
           </p>
           <p className="mt-1 text-sm font-semibold text-slate-800">
-            Spotless results, every visit
+            Чистый результат без стресса
           </p>
         </div>
       </div>

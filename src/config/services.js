@@ -1,50 +1,50 @@
 export const services = [
   {
-    id: "home-cleaning",
-    title: "Home Cleaning",
+    id: "apartment-cleaning",
+    title: "Уборка квартир",
     description:
-      "Regular upkeep for apartments and houses — kitchens, bathrooms, floors, and living areas left fresh and welcoming.",
+      "Регулярная уборка квартир: кухня, санузел, комнаты, полы и поверхности — чтобы дома было легко дышать.",
     icon: "home",
     href: "#contact",
   },
   {
     id: "deep-cleaning",
-    title: "Deep Cleaning",
+    title: "Генеральная уборка",
     description:
-      "Intensive top-to-bottom cleaning for seasonal refreshes, special occasions, or when your space needs extra attention.",
+      "Глубокая уборка, когда обычной недостаточно: труднодоступные места, детальная обработка поверхностей, застаревшая грязь.",
     icon: "sparkles",
     href: "#contact",
   },
   {
-    id: "move-cleaning",
-    title: "Move-in / Move-out Cleaning",
+    id: "renovation-cleaning",
+    title: "Уборка после ремонта",
     description:
-      "Detailed cleaning for tenants, landlords, and homeowners — perfect for handovers and starting fresh in a new place.",
-    icon: "truck",
+      "Пыль, следы строительных работ, поверхности, полы, окна по согласованию — все чтобы подготовить пространство к жизни или сдаче.",
+    icon: "hammer",
+    href: "#contact",
+  },
+  {
+    id: "house-cleaning",
+    title: "Уборка домов",
+    description:
+      "Уборка частных домов и больших пространств: комнаты, санузлы, кухня, лестницы и общие зоны.",
+    icon: "house",
     href: "#contact",
   },
   {
     id: "office-cleaning",
-    title: "Office Cleaning",
+    title: "Уборка офисов",
     description:
-      "Professional care for workspaces, meeting rooms, and shared areas with schedules that fit your business hours.",
+      "Уборка рабочих зон, переговорных, кухонь, санузлов и мест общего пользования.",
     icon: "building",
     href: "#contact",
   },
   {
     id: "eco-cleaning",
-    title: "Eco Cleaning",
+    title: "Эко-уборка",
     description:
-      "Green products and sustainable methods for families and teams who want a spotless space without harsh chemicals.",
+      "Уборка с использованием гиппоалергенных и более щадящих средств — для семей с детьми, домашними животными и тех, кто чувствителен к агрессивной химии.",
     icon: "leaf",
-    href: "#contact",
-  },
-  {
-    id: "renovation-cleaning",
-    title: "After Renovation Cleaning",
-    description:
-      "Post-construction dust removal, surface wiping, and detailed finishing so your renovated space is move-in ready.",
-    icon: "hammer",
     href: "#contact",
   },
 ];

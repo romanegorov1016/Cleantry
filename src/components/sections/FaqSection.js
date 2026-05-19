@@ -9,9 +9,9 @@ export function FaqSection() {
     <section id="faq" className={`bg-cleantry-beige/40 ${SECTION_PADDING}`}>
       <Container>
         <SectionHeader
-          eyebrow="FAQ"
-          title="Questions? We have answers"
-          description="Everything you need to know before booking your first clean with Cleantry."
+          eyebrow="Вопросы"
+          title="Что важно знать перед заказом"
+          description="Коротко о том, как мы работаем — чтобы вам было спокойнее оставить заявку."
         />
         <dl className="mx-auto mt-14 max-w-3xl space-y-4">
           {faqItems.map((item) => (

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { navigationItems } from "@/config/navigation";
+import { siteConfig } from "@/config/site";
 import { Button } from "@/components/common/Button";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ export function MobileMenu() {
         onClick={() => setIsOpen(!isOpen)}
         className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-emerald-50"
         aria-expanded={isOpen}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
@@ -43,7 +44,7 @@ export function MobileMenu() {
           ))}
           <div className="mt-2 border-t border-slate-100 pt-2">
             <Button href="#contact" className="w-full">
-              Get a Quote
+              {siteConfig.ctaQuote}
             </Button>
           </div>
         </nav>

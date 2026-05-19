@@ -1,26 +1,26 @@
 export const processSteps = [
   {
     step: "01",
-    title: "Send a request",
+    title: "Оставляете заявку",
     description:
-      "Tell us about your space, preferred date, and any special requirements through phone, email, or our contact section.",
+      "Расскажите, что нужно убрать, где и когда вам удобно.",
   },
   {
     step: "02",
-    title: "Get an estimate",
+    title: "Получаете расчёт",
     description:
-      "We review your needs and send a clear, transparent quote — no surprises, no hidden fees.",
+      "Уточняем детали и отправляем ориентировочную стоимость.",
   },
   {
     step: "03",
-    title: "Choose a time",
+    title: "Выбираете удобное время",
     description:
-      "Pick a slot that works for you. We confirm your booking and assign a trusted cleaning team.",
+      "Подтверждаем заказ и готовим команду.",
   },
   {
     step: "04",
-    title: "Enjoy a clean space",
+    title: "Принимаете чистый результат",
     description:
-      "Relax while we deliver spotless results. We follow up to make sure you are completely satisfied.",
+      "Убираем пространство и проверяем ключевые зоны перед завершением.",
   },
 ];
