@@ -25,7 +25,7 @@ export function CtaSection() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
-              href="#contact"
+              href="#calculator"
               variant="secondary"
               className="bg-white text-emerald-700 hover:bg-emerald-50"
             >

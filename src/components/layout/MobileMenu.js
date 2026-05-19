@@ -43,7 +43,7 @@ export function MobileMenu() {
             </Link>
           ))}
           <div className="mt-2 border-t border-slate-100 pt-2">
-            <Button href="#contact" className="w-full">
+            <Button href="#calculator" className="w-full">
               {siteConfig.ctaQuote}
             </Button>
           </div>

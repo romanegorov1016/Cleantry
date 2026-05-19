@@ -35,7 +35,7 @@ export function HeroSection() {
               расчётом, аккуратной командой и вниманием к деталям.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href="#contact">{siteConfig.ctaQuote}</Button>
+              <Button href="#calculator">{siteConfig.ctaQuote}</Button>
               <Button href="#services" variant="outline">
                 Посмотреть услуги
               </Button>
