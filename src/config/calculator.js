@@ -1,102 +1,114 @@
-export const calculatorSteps = [
-  { id: "type", label: "Тип уборки" },
-  { id: "areas", label: "Зоны" },
-  { id: "details", label: "Детали" },
-  { id: "summary", label: "Расчёт" },
+import {
+  CLEANING_FORMAT_IDS,
+  PROPERTY_TYPE_IDS,
+} from "@/catalog/ids";
+import {
+  mapAllCalculatorExtras,
+  mapCalculatorServiceTypes,
+  mapPropertyTypeOptions,
+} from "@/catalog/mappers";
+import { t } from "@/catalog/i18n";
+import { getAvailableCleaningFormats, getAvailableExtras } from "@/catalog/selectors";
+import {
+  CLEANING_SCOPE,
+  createInitialCalculatorState,
+  officeZoneCatalog,
+  residentialZoneCatalog,
+} from "@/lib/calculator";
+import {
+  discountRates,
+  extrasCatalog,
+  PRICING_CURRENCY,
+} from "@/lib/calculator/pricing/pricingConfig";
+
+export const cleaningScopeOptions = [
+  {
+    id: CLEANING_SCOPE.WHOLE,
+    label: "Всё помещение",
+    description: "Уборка всего объекта целиком — без ручного выбора комнат.",
+  },
+  {
+    id: CLEANING_SCOPE.ZONES,
+    label: "Отдельные зоны",
+    description: "Выберите только те зоны, которые нужно включить в расчёт.",
+  },
 ];
 
-export const serviceTypes = {
-  regular: {
-    id: "regular",
-    label: "Поддерживающая уборка",
-    description:
-      "Для регулярного поддержания чистоты в квартире или доме.",
-    basePrice: 70,
-    pricePerSquareMeter: 1.2,
+export const frequencyOptions = {
+  once: {
+    id: "once",
+    label: "Разово",
+    discount: discountRates.once,
   },
-  deep: {
-    id: "deep",
-    label: "Генеральная уборка",
-    description:
-      "Глубокая уборка с вниманием к деталям и труднодоступным зонам.",
-    basePrice: 120,
-    pricePerSquareMeter: 1.8,
+  weekly: {
+    id: "weekly",
+    label: "Еженедельно",
+    discount: discountRates.weekly,
   },
-  renovation: {
-    id: "renovation",
-    label: "Уборка после ремонта",
-    description:
-      "Уборка строительной пыли, следов работ и подготовка помещения к жизни.",
-    basePrice: 160,
-    pricePerSquareMeter: 2.3,
+  biweekly: {
+    id: "biweekly",
+    label: "Раз в 2 недели",
+    discount: discountRates.biweekly,
   },
-  office: {
-    id: "office",
-    label: "Уборка офиса",
-    description:
-      "Уборка рабочих зон, переговорных, кухни, санузлов и общих пространств.",
-    basePrice: 100,
-    pricePerSquareMeter: 1.4,
-  },
-  house: {
-    id: "house",
-    label: "Уборка дома",
-    description: "Уборка частных домов и больших пространств.",
-    basePrice: 140,
-    pricePerSquareMeter: 1.6,
+  monthly: {
+    id: "monthly",
+    label: "Ежемесячно",
+    discount: discountRates.monthly,
   },
 };
 
-export const cleaningAreas = [
-  {
-    id: "kitchen",
-    label: "Кухня",
-    description: "Поверхности, пол, фасады снаружи, раковина",
-    price: 25,
-  },
-  {
-    id: "bathroom",
-    label: "Санузел",
-    description: "Сантехника, зеркала, поверхности, пол",
-    price: 25,
-  },
-  {
-    id: "livingRoom",
-    label: "Гостиная",
-    description: "Пыль, поверхности, пол, порядок в зоне отдыха",
-    price: 15,
-  },
-  {
-    id: "bedroom",
-    label: "Спальня",
-    description: "Пыль, поверхности, пол, аккуратный порядок",
-    price: 15,
-  },
-  {
-    id: "hallway",
-    label: "Коридор",
-    description: "Пол, пыль, входная зона",
-    price: 10,
-  },
-  {
-    id: "balcony",
-    label: "Балкон",
-    description: "Пол, поверхности, базовая уборка зоны",
-    price: 20,
-  },
-];
+export const calculatorCurrency = PRICING_CURRENCY;
 
-export const extraServices = [
-  { id: "insideFridge", label: "Холодильник внутри", price: 20 },
-  { id: "insideOven", label: "Духовка внутри", price: 20 },
-  { id: "insideCabinets", label: "Шкафы внутри", price: 25 },
-  { id: "microwave", label: "Микроволновка внутри", price: 10 },
-  { id: "windowCleaning", label: "Мытьё окон", price: 25 },
-  { id: "strongDirt", label: "Сильные загрязнения", price: 40 },
-  { id: "ecoProducts", label: "Эко-средства", price: 15 },
-  { id: "urgentCleaning", label: "Срочная уборка", price: 45 },
-  { id: "petHair", label: "Шерсть животных", price: 25 },
-];
+/** @deprecated Prefer createInitialCalculatorState() */
+export const calculatorInitialState = createInitialCalculatorState();
+
+/** @deprecated Removed fake wizard steps — use completion model instead. */
+export const calculatorSteps = [];
+
+/**
+ * @param {string} [propertyTypeId]
+ */
+export function getCalculatorFormats(propertyTypeId = PROPERTY_TYPE_IDS.APARTMENT) {
+  return getAvailableCleaningFormats(propertyTypeId).map((format) => ({
+    id: format.id,
+    label: t(format.label),
+    description: t(format.shortDescription),
+    icon: format.icon,
+  }));
+}
+
+export function getCalculatorPropertyTypes() {
+  return mapPropertyTypeOptions();
+}
+
+/**
+ * @param {string} propertyTypeId
+ * @param {string} cleaningFormatId
+ */
+export function getCalculatorExtras(propertyTypeId, cleaningFormatId) {
+  return getAvailableExtras(propertyTypeId, cleaningFormatId).map((extra) => ({
+    id: extra.id,
+    label: t(extra.label),
+    price: extra.pricing.price ?? 0,
+  }));
+}
+
+/**
+ * @param {string} propertyTypeId
+ */
+export function mapZonesForPricing(propertyTypeId) {
+  return propertyTypeId === PROPERTY_TYPE_IDS.OFFICE
+    ? [...officeZoneCatalog]
+    : [...residentialZoneCatalog];
+}
+
+/** Transitional flat catalogs for summary labels */
+export const cleaningAreas = [...residentialZoneCatalog];
+export const extraServices = mapAllCalculatorExtras();
+export const serviceTypes = mapCalculatorServiceTypes(
+  "ru",
+  PROPERTY_TYPE_IDS.APARTMENT
+);
 
 export const propertyDefaults = {
   minArea: 20,
@@ -106,44 +118,8 @@ export const propertyDefaults = {
   bathrooms: ["1", "2", "3", "4+"],
 };
 
-export const frequencyOptions = {
-  once: {
-    id: "once",
-    label: "Разово",
-    discount: 0,
-  },
-  weekly: {
-    id: "weekly",
-    label: "Еженедельно",
-    discount: 0.15,
-  },
-  biweekly: {
-    id: "biweekly",
-    label: "Раз в 2 недели",
-    discount: 0.1,
-  },
-  monthly: {
-    id: "monthly",
-    label: "Ежемесячно",
-    discount: 0.05,
-  },
-};
-
-export const calculatorCurrency = "BYN";
-
-export const calculatorInitialState = {
-  serviceType: "regular",
-  selectedAreas: ["kitchen", "bathroom", "livingRoom", "bedroom", "hallway"],
-  area: 65,
-  rooms: "2",
-  bathrooms: "1",
-  frequency: "once",
-  selectedExtras: [],
-  customArea: "",
-  comment: "",
-  contact: {
-    name: "",
-    phone: "",
-    preferredTime: "",
-  },
+export const calculatorCatalogIds = {
+  propertyTypes: PROPERTY_TYPE_IDS,
+  cleaningFormats: CLEANING_FORMAT_IDS,
+  scopes: CLEANING_SCOPE,
 };

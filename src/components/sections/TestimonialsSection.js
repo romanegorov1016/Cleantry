@@ -2,11 +2,18 @@ import { Star } from "lucide-react";
 import { testimonials } from "@/config/testimonials";
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 export function TestimonialsSection() {
   return (
-    <section className={`bg-cleantry-mint/40 ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.testimonials}
+      className={`bg-cleantry-mint/40 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
         <SectionHeader
           eyebrow="Отзывы"
@@ -20,7 +27,10 @@ export function TestimonialsSection() {
               className="flex flex-col rounded-3xl border border-emerald-100/80 bg-white p-7 shadow-sm"
             >
               <div className="flex items-center justify-between gap-2">
-                <div className="flex gap-0.5 text-amber-400" aria-label={`Оценка: ${item.rating} из 5`}>
+                <div
+                  className="flex gap-0.5 text-amber-400"
+                  aria-label={`Оценка: ${item.rating} из 5`}
+                >
                   {Array.from({ length: item.rating }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-current" />
                   ))}

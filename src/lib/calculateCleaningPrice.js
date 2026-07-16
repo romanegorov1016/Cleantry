@@ -1,109 +1,69 @@
-import {
-  calculatorCurrency,
-  cleaningAreas,
-  extraServices,
-  frequencyOptions,
-  propertyDefaults,
-  serviceTypes,
-} from "@/config/calculator";
+import { calculateCleaningPrice as calculateCleaningPriceCore } from "@/lib/calculator/pricing/calculateCleaningPrice";
+import { mapUiStateToPricingInput } from "@/lib/calculator/pricing/mapUiStateToPricingInput";
+import { pricingConfig } from "@/lib/calculator/pricing/pricingConfig";
+import { validateAndNormalizeInput } from "@/lib/calculator/pricing/validateCalculatorInput";
 
-const DEFAULT_SERVICE_TYPE = "regular";
-const DEFAULT_FREQUENCY = "once";
-const BATHROOM_AREA_ID = "bathroom";
+/**
+ * UI-facing calculator entry point.
+ * Always recomputes from the full state (never incremental deltas).
+ * Returns a legacy-compatible shape plus the structured `outcome`.
+ *
+ * @param {object} calculatorState
+ * @param {import('./calculator/pricing/types.js').PricingConfig} [config]
+ */
+export function calculateCleaningPrice(
+  calculatorState = {},
+  config = pricingConfig
+) {
+  const pricingInput = mapUiStateToPricingInput(calculatorState);
+  const validation = validateAndNormalizeInput(pricingInput, config);
+  const outcome = calculateCleaningPriceCore(pricingInput, config);
 
-const bathroomAdjustments = {
-  1: 0,
-  2: 20,
-  3: 40,
-  "4+": 60,
-};
-
-function getServiceType(serviceTypeId) {
-  return serviceTypes[serviceTypeId] ?? serviceTypes[DEFAULT_SERVICE_TYPE];
-}
-
-function getFrequency(frequencyId) {
-  return frequencyOptions[frequencyId] ?? frequencyOptions[DEFAULT_FREQUENCY];
-}
-
-function normalizeArea(area) {
-  const parsedArea = Number(area);
-
-  if (!Number.isFinite(parsedArea) || parsedArea <= 0) {
-    return propertyDefaults.defaultArea;
+  if (!outcome.success || !validation.valid) {
+    return {
+      success: false,
+      errors: outcome.success ? validation.errors : outcome.errors,
+      outcome,
+      subtotal: 0,
+      discount: 0,
+      total: 0,
+      currency: config.currency,
+      breakdown: {
+        basePrice: 0,
+        areaPrice: 0,
+        selectedAreasPrice: 0,
+        extrasPrice: 0,
+        bathroomAdjustment: 0,
+        officeComposition: 0,
+        frequencyDiscount: 0,
+      },
+      pricingInput: null,
+      result: null,
+    };
   }
 
-  return Math.min(
-    propertyDefaults.maxArea,
-    Math.max(propertyDefaults.minArea, parsedArea)
-  );
-}
-
-function getSelectedIds(selectedIds) {
-  return Array.isArray(selectedIds) ? selectedIds : [];
-}
-
-function sumSelectedPrices(selectedIds, catalog) {
-  if (selectedIds.length === 0) {
-    return 0;
-  }
-
-  const priceById = new Map(catalog.map((item) => [item.id, item.price]));
-
-  return selectedIds.reduce((total, id) => total + (priceById.get(id) ?? 0), 0);
-}
-
-function getBathroomAdjustment(bathrooms) {
-  return bathroomAdjustments[bathrooms] ?? 0;
-}
-
-function roundPrice(value) {
-  return Math.round(value);
-}
-
-export function calculateCleaningPrice(calculatorState = {}) {
-  const serviceType = getServiceType(calculatorState.serviceType);
-  const frequency = getFrequency(calculatorState.frequency);
-  const area = normalizeArea(calculatorState.area);
-  const selectedAreas = getSelectedIds(calculatorState.selectedAreas);
-  const selectedExtras = getSelectedIds(calculatorState.selectedExtras);
-
-  const basePrice = serviceType.basePrice;
-  const areaPrice = roundPrice(area * serviceType.pricePerSquareMeter);
-  const selectedAreasPrice = roundPrice(
-    sumSelectedPrices(selectedAreas, cleaningAreas)
-  );
-  const extrasPrice = roundPrice(
-    sumSelectedPrices(selectedExtras, extraServices)
-  );
-
-  const isBathroomAreaSelected = selectedAreas.includes(BATHROOM_AREA_ID);
-  const bathroomAdjustment = isBathroomAreaSelected
-    ? getBathroomAdjustment(calculatorState.bathrooms)
-    : 0;
-
-  const subtotal = roundPrice(
-    basePrice +
-      areaPrice +
-      selectedAreasPrice +
-      extrasPrice +
-      bathroomAdjustment
-  );
-  const frequencyDiscount = roundPrice(subtotal * frequency.discount);
-  const total = Math.max(0, subtotal - frequencyDiscount);
+  const { result } = outcome;
 
   return {
-    subtotal,
-    discount: frequencyDiscount,
-    total,
-    currency: calculatorCurrency,
+    success: true,
+    errors: [],
+    outcome,
+    result,
+    subtotal: result.corePrice + result.extrasPrice,
+    discount: result.discountAmount,
+    total: result.totalPrice,
+    currency: result.currency,
     breakdown: {
-      basePrice,
-      areaPrice,
-      selectedAreasPrice,
-      extrasPrice,
-      bathroomAdjustment,
-      frequencyDiscount,
+      basePrice: result.basePrice,
+      areaPrice: result.areaPrice,
+      selectedAreasPrice: result.zonesPrice,
+      extrasPrice: result.extrasPrice,
+      bathroomAdjustment: result.bathroomExtra,
+      officeComposition: 0,
+      frequencyDiscount: result.discountAmount,
     },
+    pricingInput: validation.value,
   };
 }
+
+export { calculateCleaningPriceCore, mapUiStateToPricingInput, pricingConfig };

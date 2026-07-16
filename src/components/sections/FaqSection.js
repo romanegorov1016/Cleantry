@@ -2,11 +2,18 @@ import { HelpCircle } from "lucide-react";
 import { faqItems } from "@/config/faq";
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 export function FaqSection() {
   return (
-    <section id="faq" className={`bg-cleantry-beige/40 ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.faq}
+      className={`bg-cleantry-beige/40 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
         <SectionHeader
           eyebrow="Вопросы"

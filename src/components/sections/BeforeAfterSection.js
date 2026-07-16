@@ -1,6 +1,10 @@
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 const placeholders = [
   { label: "Кухня после уборки", room: "Кухня" },
@@ -34,7 +38,10 @@ function BeforeAfterCard({ label, room }) {
 
 export function BeforeAfterSection() {
   return (
-    <section className={`bg-white ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.results}
+      className={`bg-white ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
         <SectionHeader
           eyebrow="До и после"

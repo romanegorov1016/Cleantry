@@ -2,13 +2,13 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
-import { SECTION_PADDING } from "@/lib/constants";
+import { SECTION_IDS, SECTION_PADDING, SECTION_SCROLL_MARGIN } from "@/lib/constants";
 
 export function CtaSection() {
   return (
     <section
-      id="contact"
-      className={`relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 ${SECTION_PADDING}`}
+      id={SECTION_IDS.contact}
+      className={`relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"

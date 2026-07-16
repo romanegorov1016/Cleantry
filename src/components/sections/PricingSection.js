@@ -1,23 +1,32 @@
 import { Check } from "lucide-react";
-import { pricingPlans } from "@/config/pricing";
+import { getPricingSectionContent } from "@/config/pricing";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function PricingSection() {
+  const { eyebrow, title, description, plans } = getPricingSectionContent();
+
   return (
-    <section id="pricing" className={`bg-white ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.pricing}
+      className={`bg-white ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
         <SectionHeader
-          eyebrow="Цены"
-          title="Понятная стоимость без неприятных сюрпризов"
-          description="Итоговая цена зависит от площади, состояния помещения, типа уборки и дополнительных задач — мы всё уточняем заранее."
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {pricingPlans.map((plan) => (
+          {plans.map((plan) => (
             <article
               key={plan.id}
               className={cn(

@@ -1,50 +1,66 @@
-export const services = [
-  {
-    id: "apartment-cleaning",
-    title: "Уборка квартир",
-    description:
-      "Поддерживающая уборка квартиры: кухня, санузел, комнаты, полы и поверхности — чтобы дома было чисто без постоянной рутины.",
-    icon: "home",
-    href: "#contact",
+import { DEFAULT_LOCALE, t } from "@/catalog/i18n";
+import {
+  mapCleaningFormatServiceCards,
+  mapPropertyTypeServiceCards,
+  mapServiceCards,
+  mapServicesExtrasNote,
+} from "@/catalog/mappers";
+
+/** @typedef {import('@/catalog/types.js').LocaleCode} LocaleCode */
+/** @typedef {import('@/catalog/types.js').LocalizedText} LocalizedText */
+
+/** @type {{ eyebrow: LocalizedText, title: LocalizedText, description: LocalizedText }} */
+export const servicesSectionCopy = {
+  eyebrow: { ru: "Наши услуги", en: "Our services" },
+  title: { ru: "Уборка под вашу задачу", en: "Cleaning for your needs" },
+  description: {
+    ru: "Выберите тип помещения и формат уборки. Эко-средства и другие задачи подключаются как дополнительные опции в расчёте.",
+    en: "Choose a property type and cleaning format. Eco products and other tasks are available as extras in the quote.",
   },
-  {
-    id: "deep-cleaning",
-    title: "Генеральная уборка",
-    description:
-      "Глубокая уборка, когда обычной недостаточно: труднодоступные места, детальная обработка поверхностей и накопившиеся загрязнения.",
-    icon: "sparkles",
-    href: "#contact",
+};
+
+/** @type {{ propertyTypes: LocalizedText, cleaningFormats: LocalizedText, cta: LocalizedText }} */
+export const servicesSectionBlocks = {
+  propertyTypes: {
+    ru: "Что нужно убрать",
+    en: "What needs cleaning",
   },
-  {
-    id: "renovation-cleaning",
-    title: "Уборка после ремонта",
-    description:
-      "Строительная пыль, следы работ, поверхности, полы и окна по согласованию — всё, чтобы подготовить пространство к жизни, сдаче или продаже.",
-    icon: "hammer",
-    href: "#contact",
+  cleaningFormats: {
+    ru: "Какой формат уборки нужен",
+    en: "Which cleaning format do you need",
   },
-  {
-    id: "house-cleaning",
-    title: "Уборка домов",
-    description:
-      "Уборка частных домов и больших пространств: комнаты, санузлы, кухня, лестницы, холлы и общие зоны.",
-    icon: "house",
-    href: "#contact",
+  cta: {
+    ru: "Подробнее",
+    en: "Learn more",
   },
-  {
-    id: "office-cleaning",
-    title: "Уборка офисов",
-    description:
-      "Уборка рабочих зон, переговорных, кухонь, санузлов и мест общего пользования.",
-    icon: "building",
-    href: "#contact",
-  },
-  {
-    id: "eco-cleaning",
-    title: "Эко-уборка",
-    description:
-      "Уборка с использованием более щадящих средств по запросу — для семей с детьми, домашними животными и людей, чувствительных к резким запахам.",
-    icon: "leaf",
-    href: "#contact",
-  },
-];
+};
+
+/**
+ * @param {LocaleCode} [locale]
+ */
+export function getServicesSectionContent(locale = DEFAULT_LOCALE) {
+  const extrasNote = mapServicesExtrasNote(locale);
+
+  return {
+    eyebrow: t(servicesSectionCopy.eyebrow, locale),
+    title: t(servicesSectionCopy.title, locale),
+    description: t(servicesSectionCopy.description, locale),
+    ctaLabel: t(servicesSectionBlocks.cta, locale),
+    propertyTypes: {
+      id: "property-types",
+      title: t(servicesSectionBlocks.propertyTypes, locale),
+      items: mapPropertyTypeServiceCards(locale),
+    },
+    cleaningFormats: {
+      id: "cleaning-formats",
+      title: t(servicesSectionBlocks.cleaningFormats, locale),
+      items: mapCleaningFormatServiceCards(locale),
+    },
+    extrasNote,
+    /** @deprecated Prefer propertyTypes.items + cleaningFormats.items */
+    items: mapServiceCards(locale),
+  };
+}
+
+/** @deprecated Prefer getServicesSectionContent().items — kept for gradual migration. */
+export const services = mapServiceCards();
