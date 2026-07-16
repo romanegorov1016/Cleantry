@@ -3,19 +3,17 @@ import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
 import { HeroVisual } from "@/components/sections/HeroVisual";
 import { siteConfig } from "@/config/site";
-import { SECTION_PADDING } from "@/lib/constants";
-import { Calendar, Leaf, Users } from "lucide-react";
-
-const trustIndicators = [
-  { icon: Calendar, text: "Удобное время" },
-  { icon: Users, text: "Аккуратная команда" },
-  { icon: Leaf, text: "Эко-средства по запросу" },
-];
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 export function HeroSection() {
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-b from-cleantry-mint/60 via-white to-cleantry-beige/30 ${SECTION_PADDING}`}
+      id={SECTION_IDS.hero}
+      className={`relative overflow-hidden bg-gradient-to-b from-cleantry-mint/60 via-white to-cleantry-beige/30 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-100/40 via-transparent to-transparent"
@@ -40,19 +38,6 @@ export function HeroSection() {
                 Посмотреть услуги
               </Button>
             </div>
-            <ul className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
-              {trustIndicators.map(({ icon: Icon, text }) => (
-                <li
-                  key={text}
-                  className="flex items-center gap-2.5 text-sm font-medium text-slate-700"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  {text}
-                </li>
-              ))}
-            </ul>
           </div>
           <HeroVisual />
         </div>

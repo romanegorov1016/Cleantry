@@ -1,51 +1,33 @@
-export const pricingPlans = [
-  {
-    id: "regular",
-    name: "Поддерживающая уборка",
-    price: "по расчёту",
-    period: "",
-    description:
-      "Для квартир и домов, где нужно регулярно поддерживать чистоту без постоянной организации процесса.",
-    features: [
-      "Кухня и санузел",
-      "Пыль и поверхности",
-      "Мытьё полов",
-      "Вынос мусора",
-      "Регулярный график по запросу",
-    ],
-    highlighted: false,
+import { DEFAULT_LOCALE, t } from "@/catalog/i18n";
+import { mapPricingPlans } from "@/catalog/mappers";
+
+/** @typedef {import('@/catalog/types.js').LocaleCode} LocaleCode */
+/** @typedef {import('@/catalog/types.js').LocalizedText} LocalizedText */
+
+/** @type {{ eyebrow: LocalizedText, title: LocalizedText, description: LocalizedText }} */
+export const pricingSectionCopy = {
+  eyebrow: { ru: "Цены", en: "Pricing" },
+  title: {
+    ru: "Понятная стоимость без неприятных сюрпризов",
+    en: "Clear pricing without surprises",
   },
-  {
-    id: "deep",
-    name: "Генеральная уборка",
-    price: "по расчёту",
-    period: "",
-    description:
-      "Когда пространству нужно больше внимания: накопившаяся грязь, труднодоступные зоны, детальная обработка.",
-    features: [
-      "Всё из поддерживающей уборки",
-      "Труднодоступные места",
-      "Детальная уборка кухни и санузла",
-      "Двери, плинтусы, фасады",
-      "Дополнительные задачи по согласованию",
-    ],
-    highlighted: true,
-    popularLabel: "Популярно",
+  description: {
+    ru: "Итоговая цена зависит от площади, состояния помещения, формата уборки и дополнительных задач — мы всё уточняем заранее.",
+    en: "The final price depends on area, condition, cleaning format and extras — we confirm everything in advance.",
   },
-  {
-    id: "office",
-    name: "Уборка офиса",
-    price: "по расчёту",
-    period: "",
-    description:
-      "Для офисов и коммерческих помещений — с графиком, который не мешает работе.",
-    features: [
-      "Рабочие зоны",
-      "Переговорные и общие пространства",
-      "Кухня и санузлы",
-      "Полы и мусор",
-      "График под бизнес",
-    ],
-    highlighted: false,
-  },
-];
+};
+
+/**
+ * @param {LocaleCode} [locale]
+ */
+export function getPricingSectionContent(locale = DEFAULT_LOCALE) {
+  return {
+    eyebrow: t(pricingSectionCopy.eyebrow, locale),
+    title: t(pricingSectionCopy.title, locale),
+    description: t(pricingSectionCopy.description, locale),
+    plans: mapPricingPlans(locale),
+  };
+}
+
+/** @deprecated Prefer getPricingSectionContent().plans — kept for gradual migration. */
+export const pricingPlans = mapPricingPlans();

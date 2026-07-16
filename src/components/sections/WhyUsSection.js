@@ -1,54 +1,86 @@
 import {
-  Users,
-  Receipt,
-  Calendar,
-  Leaf,
   BadgeCheck,
-  Building2,
+  ClipboardList,
+  ListChecks,
+  Sparkles,
 } from "lucide-react";
-import { whyUsBenefits } from "@/config/whyUs";
+import { Button } from "@/components/common/Button";
 import { Container } from "@/components/common/Container";
-import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import { MediaSlot } from "@/components/common/MediaSlot";
+import { whyUsBenefits, whyUsCopy, whyUsMedia } from "@/config/whyUs";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 const iconMap = {
-  users: Users,
-  receipt: Receipt,
-  calendar: Calendar,
-  leaf: Leaf,
+  clipboard: ClipboardList,
+  sparkles: Sparkles,
+  list: ListChecks,
   check: BadgeCheck,
-  building: Building2,
 };
 
-export function WhyUsSection() {
+/**
+ * Unified «Почему Cleantry» section (merged About + former Why Us).
+ *
+ * @param {{
+ *   media?: typeof whyUsMedia,
+ *   mediaSlot?: import('react').ReactNode,
+ * }} [props]
+ */
+export function WhyUsSection({ media = whyUsMedia, mediaSlot } = {}) {
   return (
-    <section className={`bg-white ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.why}
+      className={`bg-cleantry-beige/50 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
-        <SectionHeader
-          eyebrow="Почему Cleantry"
-          title="Не просто уборка, а спокойствие за результат"
-          description="Сервис построен вокруг доверия, ясности и стабильного качества — чтобы вы могли делегировать уборку и не думать о ней снова."
-        />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {whyUsBenefits.map((benefit) => {
-            const Icon = iconMap[benefit.icon] || BadgeCheck;
-            return (
-              <article
-                key={benefit.id}
-                className="rounded-3xl border border-slate-100 bg-slate-50/50 p-7 transition-shadow hover:border-emerald-100 hover:shadow-md hover:shadow-emerald-900/5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-slate-900">
-                  {benefit.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {benefit.description}
-                </p>
-              </article>
-            );
-          })}
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
+              {whyUsCopy.eyebrow}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              {whyUsCopy.title}
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-600">
+              {whyUsCopy.description}
+            </p>
+            <ul className="mt-8 space-y-5">
+              {whyUsBenefits.map((benefit) => {
+                const Icon = iconMap[benefit.icon] || BadgeCheck;
+                return (
+                  <li key={benefit.id} className="flex gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="font-semibold text-slate-900">
+                        {benefit.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            <Button href={whyUsCopy.ctaHref} className="mt-8">
+              {whyUsCopy.ctaLabel}
+            </Button>
+          </div>
+
+          <div className="relative">
+            <div
+              className="absolute -inset-4 rounded-3xl bg-emerald-100/40 blur-xl"
+              aria-hidden="true"
+            />
+            <div className="relative rounded-3xl border border-emerald-100/80 bg-white p-8 shadow-lg shadow-emerald-900/5">
+              <MediaSlot media={media}>{mediaSlot}</MediaSlot>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

@@ -1,16 +1,23 @@
-import { processSteps } from "@/config/process";
+import { processSectionCopy, processSteps } from "@/config/process";
 import { Container } from "@/components/common/Container";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { SECTION_PADDING } from "@/lib/constants";
+import {
+  SECTION_IDS,
+  SECTION_PADDING,
+  SECTION_SCROLL_MARGIN,
+} from "@/lib/constants";
 
 export function ProcessSection() {
   return (
-    <section id="process" className={`bg-slate-50/80 ${SECTION_PADDING}`}>
+    <section
+      id={SECTION_IDS.process}
+      className={`bg-slate-50/80 ${SECTION_PADDING} ${SECTION_SCROLL_MARGIN}`}
+    >
       <Container>
         <SectionHeader
-          eyebrow="Как это работает"
-          title="Четыре шага до чистого пространства"
-          description="Заказать уборку просто — без длинных звонков и непонятных условий."
+          eyebrow={processSectionCopy.eyebrow}
+          title={processSectionCopy.title}
+          description={processSectionCopy.description}
         />
         <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((item, index) => (

@@ -1,3 +1,10 @@
+export const processSectionCopy = {
+  eyebrow: "Как проходит заказ",
+  title: "Четыре шага до чистого пространства",
+  description:
+    "Заказать уборку просто — без длинных звонков и непонятных условий.",
+};
+
 export const processSteps = [
   {
     step: "01",
